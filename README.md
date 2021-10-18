@@ -9,6 +9,6 @@ Repo to quickly host **Whoogle Search** on Azure.
 - apply other desired settings in `setup.yaml`
 
 ```bash
-az login
+az login --use-device-code
 ./run.sh
 ```
