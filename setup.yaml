@@ -26,8 +26,6 @@ properties:
             value: '1'
           - name: WHOOGLE_CONFIG_VIEW_IMAGE
             value: '1'
-          - name: WHOOGLE_CONFIG_URL
-            value: 'whoogle.<azure region>.azurecontainer.io'
         image: benbusby/whoogle-search:0.6.0
         ports:
           - port: 8080
