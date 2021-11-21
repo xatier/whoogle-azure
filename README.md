@@ -1,6 +1,6 @@
 # Whoogle Search on Azure Container Instances
 
-Repo to quickly host **Whoogle Search** on Azure.
+Repo to quickly host [Whoogle Search](https://github.com/benbusby/whoogle-search) on Azure.
 
 ## setup
 
