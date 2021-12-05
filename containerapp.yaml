@@ -1,0 +1,45 @@
+type: Microsoft.Web/containerApps
+tags: {}
+kind: containerapp
+location: <azure region>
+name: whoogle
+properties:
+  kubeEnvironmentId: "/subscriptions/<SUBSCRIPTIONS>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Web/kubeEnvironments/whoogle-containerapp-env"
+  configuration:
+    activeRevisionsMode: single
+    ingress:
+      external: true
+      allowInsecure: false
+      targetPort: 8080
+      transport: auto
+  template:
+    containers:
+      - name: whoogle
+        image: benbusby/whoogle-search:0.6.0
+        env:
+          # port 8080 will be wired to Azure Container Apps ingress
+          - name: EXPOSE_PORT
+            value: '8080'
+          # hide config from UI
+          - name: WHOOGLE_CONFIG_DISABLE
+            value: '1'
+          # UI langueage and search languages
+          - name: WHOOGLE_CONFIG_LANGUAGE
+            value: 'lang_zh-TW'
+          - name: WHOOGLE_CONFIG_SEARCH_LANGUAGE
+            value: 'lang_en%7Clang_zh-TW%7Clang_ja'
+          # blocked sites (comma separate list)
+          - name: WHOOGLE_CONFIG_BLOCK
+            value: 'kknews.cc'
+          - name: WHOOGLE_CONFIG_THEME
+            value: 'dark'
+          - name: WHOOGLE_CONFIG_NEW_TAB
+            value: '1'
+          - name: WHOOGLE_CONFIG_VIEW_IMAGE
+            value: '1'
+        resources:
+          cpu: 0.5
+          memory: 1Gi
+    scale:
+      minReplicas: 1
+      maxReplicas: 1
