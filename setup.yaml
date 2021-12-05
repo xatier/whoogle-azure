@@ -1,4 +1,4 @@
-apiVersion: '2021-03-01'
+apiVersion: '2021-07-01'
 location: <azure region>
 name: whoogle
 properties:
