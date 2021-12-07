@@ -11,7 +11,7 @@ on [Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-
 - apply other desired settings in `setup.yaml`
 
 ```bash
-az login --use-device-code
+az login --use-device-code --tenant <yourdiretory.onmicrosoft.com>
 ./run.sh
 ```
 
@@ -24,6 +24,6 @@ az login --use-device-code
 - apply other desired settings in `containerapp.yaml`
 
 ```bash
-az login --use-device-code
+az login --use-device-code --tenant <yourdiretory.onmicrosoft.com>
 ./azure-container-app-run.sh
 ```
