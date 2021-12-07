@@ -47,3 +47,24 @@ az containerapp show --resource-group "$AZURE_GROUP_NAME" \
     --name "$AZURE_CONTAINER_NAME" \
     --query configuration.ingress.fqdn \
     --output table
+
+CONTAINER_APP_FQDN=$(
+    az containerapp show \
+        --query configuration.ingress.fqdn \
+        --resource-group "$AZURE_GROUP_NAME" \
+        --name "$AZURE_CONTAINER_NAME" \
+        --output tsv
+)
+
+az network front-door create \
+    --resource-group "$AZURE_GROUP_NAME" \
+    --name "$AZURE_CONTAINER_NAME" \
+    --accepted-protocols Http Https \
+    --backend-address "$CONTAINER_APP_FQDN" \
+    --output table
+
+az network front-door show \
+    --query 'frontendEndpoints[0].hostName' \
+    --resource-group "$AZURE_GROUP_NAME" \
+    --name "$AZURE_CONTAINER_NAME" \
+    --output table
