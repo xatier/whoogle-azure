@@ -10,12 +10,23 @@ AZURE_CONTAINERAPPS_ENV="$AZURE_CONTAINER_NAME-containerapp-env"
 
 az monitor log-analytics workspace create \
     --resource-group "$AZURE_GROUP_NAME" \
-    --workspace-name "$AZURE_LOG_ANALYTICS_WORKSPACE"
+    --workspace-name "$AZURE_LOG_ANALYTICS_WORKSPACE" \
+    --output table
 
-az monitor log-analytics workspace list --output table
-
-LA_CLIENT_ID=$(az monitor log-analytics workspace show --query customerId --resource-group "$AZURE_GROUP_NAME" --workspace-name "$AZURE_LOG_ANALYTICS_WORKSPACE" --out tsv)
-LA_CLIENT_SECRET=$(az monitor log-analytics workspace get-shared-keys --query primarySharedKey --resource-group "$AZURE_GROUP_NAME" --workspace-name "$AZURE_LOG_ANALYTICS_WORKSPACE" --out tsv)
+LA_CLIENT_ID=$(
+    az monitor log-analytics workspace show \
+        --query customerId \
+        --resource-group "$AZURE_GROUP_NAME" \
+        --workspace-name "$AZURE_LOG_ANALYTICS_WORKSPACE" \
+        --out tsv
+)
+LA_CLIENT_SECRET=$(
+    az monitor log-analytics workspace get-shared-keys \
+        --query primarySharedKey \
+        --resource-group "$AZURE_GROUP_NAME" \
+        --workspace-name "$AZURE_LOG_ANALYTICS_WORKSPACE" \
+        --out tsv
+)
 
 az containerapp env create \
     --resource-group "$AZURE_GROUP_NAME" \
