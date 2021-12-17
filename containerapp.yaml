@@ -15,7 +15,7 @@ properties:
   template:
     containers:
       - name: whoogle
-        image: benbusby/whoogle-search:0.6.0
+        image: benbusby/whoogle-search:0.7.0
         env:
           # port 8080 will be wired to Azure Container Apps ingress
           - name: EXPOSE_PORT

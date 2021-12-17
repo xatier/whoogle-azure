@@ -26,7 +26,7 @@ properties:
             value: '1'
           - name: WHOOGLE_CONFIG_VIEW_IMAGE
             value: '1'
-        image: benbusby/whoogle-search:0.6.0
+        image: benbusby/whoogle-search:0.7.0
         ports:
           - port: 8080
             protocol: TCP
