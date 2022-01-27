@@ -1,4 +1,4 @@
-apiVersion: '2021-07-01'
+apiVersion: '2021-09-01'
 location: <azure region>
 name: whoogle
 properties:
@@ -9,6 +9,8 @@ properties:
           # port 8080 will be wired to Caddy
           - name: EXPOSE_PORT
             value: '8080'
+          - name: WHOOGLE_AUTOCOMPLETE
+            value: '1'
           # hide config from UI
           - name: WHOOGLE_CONFIG_DISABLE
             value: '1'
@@ -26,7 +28,7 @@ properties:
             value: '1'
           - name: WHOOGLE_CONFIG_VIEW_IMAGE
             value: '1'
-        image: benbusby/whoogle-search:0.7.0
+        image: benbusby/whoogle-search:latest
         ports:
           - port: 8080
             protocol: TCP
