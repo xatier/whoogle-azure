@@ -42,11 +42,9 @@ properties:
         command:
           [
             'caddy',
-            'reverse-proxy',
-            '--from',
-            'whoogle.<azure region>.azurecontainer.io',
-            '--to',
-            'localhost:8080',
+            'run',
+            '--config',
+            '/srv/Caddyfile',
           ]
         ports:
           - port: 80
@@ -57,6 +55,9 @@ properties:
           requests:
             cpu: 0.5
             memoryInGB: 0.5
+        volumeMounts:
+          - mountPath: /srv
+            name: srv
   initContainers: []
   ipAddress:
     dnsNameLabel: whoogle
@@ -67,6 +68,12 @@ properties:
       - port: 443
         protocol: TCP
     type: Public
+  volumes:
+    - name: srv
+      azureFile:
+        sharename: whoogle
+        storageAccountName: <>
+        storageAccountKey: <>
   osType: Linux
   restartPolicy: Always
   sku: Standard

@@ -6,12 +6,23 @@ on [Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-
 
 ## Azure Container Instances setup
 
+- update `<azure region>` in `Caddyfile`.
+- generate `ca.cert` under `certs/ca.cert`.
 - update `AZURE_GROUP_NAME` in `run.sh`.
+- update `AZURE_GROUP_NAME` and `LOCATION` in `azure-storage-create.sh`.
 - update `<azure region>` in `setup.yaml`.
 - apply other desired settings in `setup.yaml`
 
 ```bash
 az login --use-device-code --tenant <yourdiretory.onmicrosoft.com>
+
+# upload Caddyfile to Azure Storage Files
+# this script will print `storageAccountName` and `storageAccountKey`
+./azure-storage-create.sh
+
+# update `storageAccountName` and `storageAccountKey` in `setup.yaml`
+
+# deploy container instance
 ./run.sh
 ```
 
