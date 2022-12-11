@@ -11,6 +11,8 @@ properties:
             value: '8080'
           - name: WHOOGLE_AUTOCOMPLETE
             value: '1'
+          - name: WHOOGLE_RESULTS_PER_PAGE
+            value: 20
           # hide config from UI
           - name: WHOOGLE_CONFIG_DISABLE
             value: '1'
