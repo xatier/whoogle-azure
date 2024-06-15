@@ -9,13 +9,37 @@ properties:
           # port 8080 will be wired to Caddy
           - name: EXPOSE_PORT
             value: '8080'
+          - name: WHOOGLE_ALT_TW
+            value: ''
+          - name: WHOOGLE_ALT_YT
+            value: ''
+          - name: WHOOGLE_ALT_IG
+            value: ''
+          - name: WHOOGLE_ALT_RD
+            value: ''
+          - name: WHOOGLE_ALT_TL
+            value: ''
+          - name: WHOOGLE_ALT_MD
+            value: ''
+          - name: WHOOGLE_ALT_IMG
+            value: ''
+          - name: WHOOGLE_ALT_WIKI
+            value: ''
+          - name: WHOOGLE_ALT_IMDB
+            value: ''
+          - name: WHOOGLE_ALT_QUORA
+            value: ''
           - name: WHOOGLE_AUTOCOMPLETE
+            value: '1'
+          - name: WHOOGLE_MINIMAL
             value: '1'
           - name: WHOOGLE_RESULTS_PER_PAGE
             value: 20
           # hide config from UI
           - name: WHOOGLE_CONFIG_DISABLE
             value: '1'
+          - name: WHOOGLE_CONFIG_COUNTRY
+            value: 'US'
           # UI langueage and search languages
           - name: WHOOGLE_CONFIG_LANGUAGE
             value: 'lang_zh-TW'
@@ -23,9 +47,13 @@ properties:
             value: 'lang_en%7Clang_zh-TW%7Clang_ja'
           # blocked sites (comma separate list)
           - name: WHOOGLE_CONFIG_BLOCK
-            value: 'kknews.cc'
+            value: ''
+          - name: WHOOGLE_CONFIG_BLOCK_URL
+            value: 'read01\.com|kknews\.cc|pttyes\.com|ptt\.reviews|ptthito\.com|mediatagtw\.com|tiktok\.com'
           - name: WHOOGLE_CONFIG_THEME
             value: 'dark'
+          - name: WHOOGLE_CONFIG_ALTS
+            value: '1'
           - name: WHOOGLE_CONFIG_NEW_TAB
             value: '1'
           - name: WHOOGLE_CONFIG_VIEW_IMAGE
